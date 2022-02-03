@@ -34,15 +34,6 @@
 </html>
 
 <script>
-    $("#btnResetForm").click(()=>{
-        resetForm()
-    })
-
-    function resetForm(){
-        $("#quizName").val("");
-        $("#quizStartTime").val("");
-        $("#quizEndTime").val("");
-    }
 
     $("#btnCreateQuiz").click(() => {
         if($("#quizName").val().trim() !== "" &&
@@ -74,19 +65,15 @@
             '<label class="w-full text-xl">Quiz Start Time:</label>'+
             '<input type="datetime-local" id="quizStartTime" class="w-full border-2 py-1 px-2">'+
             '<label class="w-full text-xl">Quiz End Time:</label>'+
-            '<input type="datetime-local" id="quizStartTime" class="w-full border-2 py-1 px-2">'+
+            '<input type="datetime-local" id="quizEndTime" class="w-full border-2 py-1 px-2">'+
             '</div>',
             boxWidth: '40%',
             useBootstrap: false,
             draggable: true,
+            escapeKey:'cancel',
             buttons:{
                 cancel: {
                     btnClass: 'btn-red'    
-                },
-                reset: {
-                    action: () =>{
-                        resetForm()
-                    }
                 },
                 create: {
                     action: () => {
@@ -104,7 +91,27 @@
                                 },
                                 success: function (response) {
                                     resetForm()
-                                    console.log(response);
+                                    $.alert({
+                                        boxWidth:'20%',
+                                        useBootstrap:false,
+                                        content:response,
+                                        autoClose:'confirm|3000',
+                                        buttons:{
+                                            confirm:{}
+                                        }
+                                    });
+                                    fetchQuiz();
+                                }
+                            });
+                        }
+                        else{
+                            $.alert({
+                                boxWidth:'20%',
+                                useBootstrap:false,
+                                content:'All field must be filled!',
+                                autoClose:'confirm|5000',
+                                buttons:{
+                                    confirm:{}
                                 }
                             });
                         }
