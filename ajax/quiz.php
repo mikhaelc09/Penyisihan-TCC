@@ -20,11 +20,11 @@
         $stmt->execute();
         $quizzes= $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
         foreach ($quizzes as $key => $qz) {
-            echo "<div class='w-4/5 h-24 bg-tcc-darkGray mx-auto my-3 px-4 py-2'>";
-                echo "<span class='text-xl font-bold'>".$qz["quiz_name"]."</span>";
-                echo "<div class='flex justify-between pt-3'>";
-                    echo "<button class='px-10 py-1 bg-tcc-emerald'>Edit</button>";
-                    echo "<button class='px-10 py-1 bg-tcc-emerald'>Delete</button>";
+            echo "<div class='w-4/5 h-24 bg-tcc-darkGray mx-auto my-3 px-4 py-2 flex flex-row justify-between'>";
+                echo "<span class='text-2xl font-bold text-blue-50'>".$qz["quiz_name"]."</span>";
+                echo "<div class='flex justify-end pt-3 gap-x-2 items-end pb-2'>";
+                    echo "<button class='w-24 py-1 bg-tcc-emerald h-10 hover:bg-emerald-300'>Edit</button>";
+                    echo "<button class='w-24 py-1 bg-red-500 h-10 hover:bg-red-400'>Delete</button>";
                 echo "</div>";
             echo "</div>";
         }
