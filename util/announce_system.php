@@ -20,11 +20,16 @@
          else echo "Gagal add announcement";
       }
       /** Avoid using this method at all cost, this is just here for emergency purposes only */
-      public static function deleteAnnouncement($announcement) {
-         if ($announcement instanceof Announcement) {
-            echo "Berhasil jalan";
+      public static function deleteAnnouncement($id) {
+         if (is_integer($id)) {
+            global $conn;
+            $stmt = $conn -> prepare("DELETE FROM announcement WHERE (announcement_id = ?)");
+            $stmt -> bind_param('i', $id);
+            $stmt -> execute();
+            
+            echo 'Successfully add the announcement';
          }
-         else echo "Gagal delete announcement";
+         else echo "Id tidak valid";
       }
       public static function editAnnouncement($announcement) {
          if ($announcement instanceof Announcement) {
