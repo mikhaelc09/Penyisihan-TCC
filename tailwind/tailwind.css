@@ -468,7 +468,6 @@ Ensure the default browser behavior of the `hidden` attribute.
   --tw-backdrop-sepia:  ;
 }
 
-<<<<<<< Updated upstream
 .relative {
   position: relative;
 }
@@ -485,8 +484,6 @@ Ensure the default browser behavior of the `hidden` attribute.
   float: left;
 }
 
-=======
->>>>>>> Stashed changes
 .mx-auto {
   margin-left: auto;
   margin-right: auto;
@@ -502,14 +499,11 @@ Ensure the default browser behavior of the `hidden` attribute.
   margin-bottom: 1.25rem;
 }
 
-<<<<<<< Updated upstream
 .my-2 {
   margin-top: 0.5rem;
   margin-bottom: 0.5rem;
 }
 
-=======
->>>>>>> Stashed changes
 .mt-10 {
   margin-top: 2.5rem;
 }
@@ -522,7 +516,6 @@ Ensure the default browser behavior of the `hidden` attribute.
   margin-left: 2.5rem;
 }
 
-<<<<<<< Updated upstream
 .mb-6 {
   margin-bottom: 1.5rem;
 }
@@ -539,8 +532,6 @@ Ensure the default browser behavior of the `hidden` attribute.
   display: block;
 }
 
-=======
->>>>>>> Stashed changes
 .flex {
   display: flex;
 }
@@ -553,13 +544,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   display: grid;
 }
 
-<<<<<<< Updated upstream
 .hidden {
   display: none;
 }
 
-=======
->>>>>>> Stashed changes
 .h-24 {
   height: 6rem;
 }
@@ -604,7 +592,6 @@ Ensure the default browser behavior of the `hidden` attribute.
   height: -webkit-max-content;
   height: -moz-max-content;
   height: max-content;
-<<<<<<< Updated upstream
 }
 
 .h-5\/6 {
@@ -633,24 +620,6 @@ Ensure the default browser behavior of the `hidden` attribute.
   min-height: 100%;
 }
 
-=======
-}
-
-.min-h-screen {
-  min-height: 100vh;
-}
-
-.min-h-max {
-  min-height: -webkit-max-content;
-  min-height: -moz-max-content;
-  min-height: max-content;
-}
-
-.min-h-full {
-  min-height: 100%;
-}
-
->>>>>>> Stashed changes
 .min-h-min {
   min-height: -webkit-min-content;
   min-height: -moz-min-content;
@@ -693,7 +662,6 @@ Ensure the default browser behavior of the `hidden` attribute.
   width: 75%;
 }
 
-<<<<<<< Updated upstream
 .min-w-0 {
   min-width: 0px;
 }
@@ -714,8 +682,6 @@ Ensure the default browser behavior of the `hidden` attribute.
   border-collapse: collapse;
 }
 
-=======
->>>>>>> Stashed changes
 .cursor-pointer {
   cursor: pointer;
 }
@@ -744,13 +710,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   flex-direction: column-reverse;
 }
 
-<<<<<<< Updated upstream
 .flex-wrap {
   flex-wrap: wrap;
 }
 
-=======
->>>>>>> Stashed changes
 .items-end {
   align-items: flex-end;
 }
@@ -814,7 +777,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .gap-y-3 {
   row-gap: 0.75rem;
-<<<<<<< Updated upstream
 }
 
 .gap-x-3 {
@@ -834,19 +796,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .overflow-x-auto {
   overflow-x: auto;
-=======
-}
-
-.gap-x-3 {
-  -moz-column-gap: 0.75rem;
-       column-gap: 0.75rem;
-}
-
-.space-x-8 > :not([hidden]) ~ :not([hidden]) {
-  --tw-space-x-reverse: 0;
-  margin-right: calc(2rem * var(--tw-space-x-reverse));
-  margin-left: calc(2rem * calc(1 - var(--tw-space-x-reverse)));
->>>>>>> Stashed changes
 }
 
 .overflow-y-scroll {
@@ -903,7 +852,6 @@ Ensure the default browser behavior of the `hidden` attribute.
   border-width: 2px;
 }
 
-<<<<<<< Updated upstream
 .border-0 {
   border-width: 0px;
 }
@@ -928,8 +876,6 @@ Ensure the default browser behavior of the `hidden` attribute.
   border-style: solid;
 }
 
-=======
->>>>>>> Stashed changes
 .bg-tcc-darkGray {
   --tw-bg-opacity: 1;
   background-color: rgb(64 75 102 / var(--tw-bg-opacity));
@@ -966,7 +912,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 
 .bg-tcc-lightGray {
-<<<<<<< Updated upstream
   --tw-bg-opacity: 1;
   background-color: rgb(131 139 156 / var(--tw-bg-opacity));
 }
@@ -976,41 +921,13 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 
 .bg-red-200 {
-=======
->>>>>>> Stashed changes
   --tw-bg-opacity: 1;
   background-color: rgb(254 202 202 / var(--tw-bg-opacity));
 }
 
-<<<<<<< Updated upstream
 .bg-white {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
-=======
-.px-4 {
-  padding-left: 1rem;
-  padding-right: 1rem;
-}
-
-.py-2 {
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
-}
-
-.px-10 {
-  padding-left: 2.5rem;
-  padding-right: 2.5rem;
-}
-
-.py-1 {
-  padding-top: 0.25rem;
-  padding-bottom: 0.25rem;
-}
-
-.py-8 {
-  padding-top: 2rem;
-  padding-bottom: 2rem;
->>>>>>> Stashed changes
 }
 
 .p-4 {
@@ -1022,7 +939,6 @@ Ensure the default browser behavior of the `hidden` attribute.
   padding-right: 1rem;
 }
 
-<<<<<<< Updated upstream
 .py-2 {
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
@@ -1048,8 +964,6 @@ Ensure the default browser behavior of the `hidden` attribute.
   padding-right: 1.25rem;
 }
 
-=======
->>>>>>> Stashed changes
 .py-4 {
   padding-top: 1rem;
   padding-bottom: 1rem;
@@ -1085,14 +999,11 @@ Ensure the default browser behavior of the `hidden` attribute.
   padding-right: 0.5rem;
 }
 
-<<<<<<< Updated upstream
 .px-6 {
   padding-left: 1.5rem;
   padding-right: 1.5rem;
 }
 
-=======
->>>>>>> Stashed changes
 .pt-3 {
   padding-top: 0.75rem;
 }
@@ -1115,7 +1026,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .pb-2 {
   padding-bottom: 0.5rem;
-<<<<<<< Updated upstream
 }
 
 .pb-3 {
@@ -1124,12 +1034,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .text-left {
   text-align: left;
-=======
-}
-
-.pb-3 {
-  padding-bottom: 0.75rem;
->>>>>>> Stashed changes
 }
 
 .text-center {
@@ -1179,7 +1083,6 @@ Ensure the default browser behavior of the `hidden` attribute.
   line-height: 2.25rem;
 }
 
-<<<<<<< Updated upstream
 .text-xs {
   font-size: 0.75rem;
   line-height: 1rem;
@@ -1195,8 +1098,6 @@ Ensure the default browser behavior of the `hidden` attribute.
   line-height: 1.25rem;
 }
 
-=======
->>>>>>> Stashed changes
 .font-bold {
   font-weight: 700;
 }
@@ -1205,7 +1106,6 @@ Ensure the default browser behavior of the `hidden` attribute.
   font-weight: 500;
 }
 
-<<<<<<< Updated upstream
 .font-semibold {
   font-weight: 600;
 }
@@ -1218,8 +1118,6 @@ Ensure the default browser behavior of the `hidden` attribute.
   text-transform: uppercase;
 }
 
-=======
->>>>>>> Stashed changes
 .text-gray-100 {
   --tw-text-opacity: 1;
   color: rgb(243 244 246 / var(--tw-text-opacity));
@@ -1265,7 +1163,6 @@ Ensure the default browser behavior of the `hidden` attribute.
   color: rgb(239 246 255 / var(--tw-text-opacity));
 }
 
-<<<<<<< Updated upstream
 .text-black {
   --tw-text-opacity: 1;
   color: rgb(0 0 0 / var(--tw-text-opacity));
@@ -1276,8 +1173,6 @@ Ensure the default browser behavior of the `hidden` attribute.
   color: rgb(251 207 232 / var(--tw-text-opacity));
 }
 
-=======
->>>>>>> Stashed changes
 .underline-offset-4 {
   text-underline-offset: 4px;
 }
