@@ -12,7 +12,7 @@
 
             global $conn;
             $stmt = $conn -> prepare("INSERT INTO announcement(judul, body, date_created, status) VALUES (?, ?, ?, ?)");
-            $stmt -> bind_param('ssss', $title, $body, $dateNow, $status);
+            $stmt -> bind_param('sssi', $title, $body, $dateNow, $status);
             $stmt -> execute();
 
             echo 'Successfully add the announcement';
@@ -21,27 +21,39 @@
       }
       /** Avoid using this method at all cost, this is just here for emergency purposes only */
       public static function deleteAnnouncement($id) {
-         if (is_integer($id)) {
-            global $conn;
-            $stmt = $conn -> prepare("DELETE FROM announcement WHERE (announcement_id = ?)");
-            $stmt -> bind_param('i', $id);
-            $stmt -> execute();
-            
-            echo 'Successfully add the announcement';
-         }
-         else echo "Id tidak valid";
+         global $conn;
+         $stmt = $conn -> prepare("DELETE FROM announcement WHERE (announcement_id = ?)");
+         $stmt -> bind_param('i', $id);
+         $stmt -> execute();
+
+         echo 'Successfully delete the announcement';
       }
-      public static function editAnnouncement($announcement) {
+      public static function editAnnouncement($id, $announcement) {
          if ($announcement instanceof Announcement) {
-            echo "Berhasil jalan";
+            $title = $announcement->get_title();
+            $body = $announcement->get_body();
+            $status = $announcement->get_status();
+
+            global $conn;
+            $stmt = $conn -> prepare("UPDATE announcement SET judul = ?, body = ?, status = ? where announcement_id = ?");
+            $stmt -> bind_param('ssii', $title, $body, $status, $id);
+            $stmt -> execute();
+
+            echo 'Successfully edit the announcement';
          }
-         else echo "Gagal jalan";
+         else echo "Gagal Edit";
       }
    }
 
    if (isset($_POST['announce'])) {
-      print_r($_POST);
       $newAnnounce = new Announcement($_POST['title'], $_POST['body']);
       AnnounceSystem::addAnnouncement($newAnnounce);
+   }
+   else if (isset($_POST['edit'])) {
+      $newAnnounce = new Announcement($_POST['title'], $_POST['body']);
+      AnnounceSystem::editAnnouncement($_POST['id'], $newAnnounce);
+   }
+   else if (isset($_POST['delete'])) {
+      AnnounceSystem::deleteAnnouncement($_POST['id']);
    }
 ?>
