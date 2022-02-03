@@ -21,7 +21,7 @@
                 <h1 class="text-3xl font-bold">Announcement</h1>
             </section></a>
 
-            <a href="../pages/quizSetup.php" class="w-1/3"><section class="h-48 rounded-lg shadow-md bg-tcc-darkGray cursor-pointer flex items-center justify-center hover:bg-tcc-lightGray hover:underline underline-offset-4">
+            <a href="../pages/quizMenu.php" class="w-1/3"><section class="h-48 rounded-lg shadow-md bg-tcc-darkGray cursor-pointer flex items-center justify-center hover:bg-tcc-lightGray hover:underline underline-offset-4">
                 <h1 class="text-3xl font-bold">Quiz</h1>
             </section></a>
 
