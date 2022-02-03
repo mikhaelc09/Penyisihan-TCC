@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 02, 2022 at 04:32 PM
+-- Generation Time: Feb 03, 2022 at 08:33 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.10
 
@@ -59,6 +59,7 @@ CREATE TABLE `peserta` (
 
 CREATE TABLE `quiz` (
   `quiz_id` int(11) NOT NULL,
+  `quiz_name` varchar(255) NOT NULL,
   `time_start` date NOT NULL,
   `time_end` date NOT NULL,
   `status` int(11) NOT NULL
