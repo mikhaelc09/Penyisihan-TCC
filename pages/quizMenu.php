@@ -28,3 +28,50 @@
     </div>
 </body>
 </html>
+
+<script>
+    $("#btnResetForm").click(()=>{
+        resetForm()
+    })
+
+    function resetForm(){
+        $("#quizName").val("");
+        $("#quizStartTime").val("");
+        $("#quizEndTime").val("");
+    }
+
+    $("#btnCreateQuiz").click(() => {
+        if($("#quizName").val().trim() !== "" &&
+        $("#quizStartTime").val().trim() !== "" &&
+        $("#quizEndTime").val().trim() !== "" ){
+            $.ajax({
+                type: "POST",
+                url: "../ajax/quiz.php",
+                data: {
+                    "requestType" : "createQuiz",
+                    "quizName" : $("#quizName").val(),
+                    "quizStartTime" : $("#quizStartTime").val(),
+                    "quizEndTime" : $("#quizEndTime").val()
+                },
+                success: function (response) {
+                    resetForm()
+                    console.log(response);
+                }
+            });
+        }
+    })
+
+    fetchQuiz();
+    function fetchQuiz(){
+        $.ajax({
+            type: "POST",
+            url: "../ajax/quiz.php",
+            data: {
+                "requestType" : "listQuiz"
+            },
+            success: function (response) {
+                $("#quizList").append(response);
+            }
+        });
+    }
+</script>
