@@ -1,4 +1,5 @@
 <?php
+   require_once './connection.php';
    /**
     * A constant variable for the status property of the Announcement class.
     * You can use it with calling the {AnnouncementObject}->get_status(ANNOUNCEMENT_STATUS['ACTIVE']); method.
@@ -9,11 +10,13 @@
    ]);
 
    class Announcement {
+      public $id;
       protected $title;
       protected $body;
       protected $status;
 
       function __construct($title, $body) {
+         $this->id = -1;
          $this->title = $title;
          $this->body = $body;
          $this->status = ANNOUNCEMENT_STATUS['NOT_ACTIVE'];
