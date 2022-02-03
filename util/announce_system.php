@@ -14,9 +14,12 @@
             $stmt = $conn -> prepare("INSERT INTO announcement(judul, body, date_created, status) VALUES (?, ?, ?, ?)");
             $stmt -> bind_param('ssss', $title, $body, $dateNow, $status);
             $stmt -> execute();
+
+            echo 'Successfully add the announcement';
          }
          else echo "Gagal add announcement";
       }
+      /** Avoid using this method at all cost, this is just here for emergency purposes only */
       public static function deleteAnnouncement($announcement) {
          if ($announcement instanceof Announcement) {
             echo "Berhasil jalan";
@@ -34,6 +37,6 @@
    if (isset($_POST['announce'])) {
       print_r($_POST);
       $newAnnounce = new Announcement($_POST['title'], $_POST['body']);
-      AnnounceSystem::addAnnouncement($newAnnounce) ;
+      AnnounceSystem::addAnnouncement($newAnnounce);
    }
 ?>
