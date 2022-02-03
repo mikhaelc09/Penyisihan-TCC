@@ -22,8 +22,7 @@ $user = $conn->query("SELECT * From peserta order by score desc")->fetch_all(MYS
         <?php require("../components/adminnav.php") ?>
 
         <main class="w-full flex flex-col items-center py-10 gap-4">
-            <div style="background-color:#733711" class="relative flex flex-col min-w-0 break-words w-3/4 mb-6 shadow-lg rounded 
- text-black">
+            <div style="background-color:#d4d0b5" class="relative flex flex-col min-w-0 break-words w-3/4 mb-6 shadow-lg rounded text-black">
                 <div class="rounded-t mb-0 px-4 py-3 border-0">
                     <div class="flex flex-wrap items-center">
                         <div class="relative w-full px-4 max-w-full flex-grow flex-1 ">
@@ -35,13 +34,13 @@ $user = $conn->query("SELECT * From peserta order by score desc")->fetch_all(MYS
                     <table class="items-center w-full bg-transparent border-collapse">
                         <thead>
                             <tr>
-                                <th class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-pink-600 text-pink-200 border-pink-700">No.</th>
-                                <th class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-pink-600 text-pink-200 border-pink-700">Full Name</th>
-                                <th class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-pink-600 text-pink-200 border-pink-700">NRP</th>
-                                <th class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-pink-600 text-pink-200 border-pink-700">Email</th>
-                                <th class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-pink-600 text-pink-200 border-pink-700">Status</th>
-                                <th class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-pink-600 text-pink-200 border-pink-700">User's Score</th>
-                                <th class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-pink-600 text-pink-200 border-pink-700"></th>
+                                <th style="background-color: #f5bf6c; border-color:#743a36" class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left text-pink-200">No.</th>
+                                <th style="background-color: #f5bf6c; border-color:#743a36" class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left text-pink-200">Full Name</th>
+                                <th style="background-color: #f5bf6c; border-color:#743a36" class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left text-pink-200">nrp</th>
+                                <th style="background-color: #f5bf6c; border-color:#743a36" class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left text-pink-200">Email</th>
+                                <th style="background-color: #f5bf6c; border-color:#743a36" class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left text-pink-200">Status</th>
+                                <th style="background-color: #f5bf6c; border-color:#743a36" class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left text-pink-200">User's Score</th>
+                                <th style="background-color: #f5bf6c; border-color:#743a36" class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left text-pink-200"></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -50,7 +49,7 @@ $user = $conn->query("SELECT * From peserta order by score desc")->fetch_all(MYS
                                     <tr>
                                         <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"><?= $key + 1 ?>.</td>
                                         <th class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                                            <span class="font-bold text-white align-middle"><?= $value['full_name'] ?></span>
+                                            <span class="font-bold text-black align-middle"><?= $value['full_name'] ?></span>
                                         </th>
                                         <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"><?= $value['nrp'] ?></td>
                                         <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"><?= $value['email'] ?></td>
@@ -60,7 +59,7 @@ $user = $conn->query("SELECT * From peserta order by score desc")->fetch_all(MYS
                                                 <span class="mr-2"><?= $value['score'] ?></span>
                                                 <div class="relative w-full">
                                                     <div class="overflow-hidden h-2 text-xs flex rounded bg-red-200">
-                                                        <div style="width: <?= $value['score'] ?>%" class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-red-500"></div>
+                                                        <div style="width: <?= $value['score'] ?>%;background-color:#de3163" class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center"></div>
                                                     </div>
                                                 </div>
                                             </div>
