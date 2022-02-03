@@ -5,8 +5,9 @@
     * You can use it with calling the {AnnouncementObject}->get_status(ANNOUNCEMENT_STATUS['ACTIVE']); method.
     */
    define("ANNOUNCEMENT_STATUS", [
-      'NOT_ACTIVE' => 'NOT ACTIVE',
-      'ACTIVE' => 'ACTIVE'
+      'NOT_ACTIVE' => 0,
+      'ACTIVE' => 1,
+      'DISABLE' => 2
    ]);
 
    class Announcement {
@@ -41,7 +42,7 @@
       }
 
       function set_status($status) {
-         if ($status === ANNOUNCEMENT_STATUS['NOT_ACTIVE'] || $status === ANNOUNCEMENT_STATUS['ACTIVE']) $this -> status = $status;
+         if ($status === ANNOUNCEMENT_STATUS['NOT_ACTIVE'] || $status === ANNOUNCEMENT_STATUS['ACTIVE'] || ANNOUNCEMENT_STATUS['DISABLE']) $this -> status = $status;
          else echo 'New status for announcement is invalid!<br>';
       }
 
