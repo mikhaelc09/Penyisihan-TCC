@@ -1,5 +1,6 @@
 <?php
 require_once("../util/connection.php");
+$peserta = $conn->query("SELECT * From peserta")->fetch_all(MYSQLI_ASSOC);
 
 if (isset($_POST['register'])) {
     $full_name = $_POST['full_name'];
@@ -11,10 +12,26 @@ if (isset($_POST['register'])) {
         $password = md5($confirm);
         $status = 1;
         $score = 0;
-        $stmt = $conn->prepare("INSERT INTO `peserta` (`full_name`, `email`, `password`, `nrp`, `status`, `score`) VALUES (?,?,?,?,?,?)");
-        $stmt->bind_param("ssssii", $full_name, $email, $password, $nrp, $status, $score);
-        $stmt->execute();
-        echo "<script>alert('You have successfully register')</script>";
+        $found = false;
+        foreach ($peserta as $key => $value) {
+            if ($value['email'] == $email) {
+                $found =  true;
+            } else if ($value['nrp'] == $nrp) {
+                $found = true;
+            }
+        }
+        if ($email == "admin") {
+            //register ke admin
+            $found = true;
+        }
+        if ($found) {
+            echo "<script>alert('Email is already used')</script>";
+        } else {
+            $stmt = $conn->prepare("INSERT INTO `peserta` (`full_name`, `email`, `password`, `nrp`, `status`, `score`) VALUES (?,?,?,?,?,?)");
+            $stmt->bind_param("ssssii", $full_name, $email, $password, $nrp, $status, $score);
+            $stmt->execute();
+            echo "<script>alert('You have successfully register')</script>";
+        }
     } else {
         echo "<script>alert('Password and confirm password is different')</script>";
     }

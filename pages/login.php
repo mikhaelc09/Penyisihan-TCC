@@ -1,5 +1,7 @@
 <?php
     require("../util/connection.php");
+    $peserta = $conn->query("SELECT * From peserta")->fetch_all(MYSQLI_ASSOC);
+    
 ?>
 
 <!DOCTYPE html>
@@ -21,7 +23,7 @@
                 <div class="flex flex-col items-center justify-center w-full gap-y-5 h-4/5">
                     <input type="text" name="email" placeholder="Email" class="px-4 py-2 w-4/5 rounded-md">
                     <input type="password" name="password" placeholder="Password" class="px-4 py-2 w-4/5 rounded-md">
-                    <input type="submit" value="Login" class="w-4/5 bg-tcc-darkEmerald rounded-md py-1 text-xl cursor-pointer hover:bg-tcc-emerald">
+                    <input type="submit" name="login" value="Login" class="w-4/5 bg-tcc-darkEmerald rounded-md py-1 text-xl cursor-pointer hover:bg-tcc-emerald">
                 </div>
             </form>
         </div>
