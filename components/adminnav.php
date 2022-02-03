@@ -2,7 +2,7 @@
     <ul class="flex flex-row gap-5 items-center">
         <li class="transition-all hover:scale-110"><a href="">Home</a></li>
         <li class="transition-all hover:scale-110"><a href="">Announcement</a></li>
-        <li class="transition-all hover:scale-110"><a href="../pages/quizSetup.php">Quiz</a></li>
+        <li class="transition-all hover:scale-110"><a href="../pages/quizMenu.php">Quiz</a></li>
         <li class="transition-all hover:scale-110"><a href="">Users</a></li>
         <li class="transition-all hover:scale-110"><a href="">Logout</a></li>
     </ul>
