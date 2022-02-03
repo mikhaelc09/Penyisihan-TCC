@@ -14,10 +14,14 @@
 </head>
 <body>
    <div class="form">
+      <label for="idAnnounce">id:</label><input type="text" name="idAnnounce" id="idAnnounce"><br>
       <label for="title">Title:</label><input type="text" name="title" id="title"><br>
       <label for="body">Body:</label><br>
       <textarea name="body" id="body" cols="30" rows="10"></textarea>
       <button id="announce">Create announcement</button>
+      <button id="edit">Edit announcement</button>
+      <button id="delete">Delete announcement</button>
+      
    </div>
    <script>
       $("#announce").click((event) => {
@@ -27,6 +31,42 @@
                title: $("#title").val(),
                body: $("#body").val(),
                announce: true
+            },
+            success: (response) => {
+               if (response) {
+                  alert(response);
+               }
+            },
+            error: (err) => {
+               throw new Error(err.message);
+            }
+         });
+      });
+      $("#edit").click((event) => {
+         $.post({
+            url: './util/announce_system.php',
+            data: {
+               id: Number($("#idAnnounce").val()),
+               title: $("#title").val(),
+               body: $("#body").val(),
+               edit: true
+            },
+            success: (response) => {
+               if (response) {
+                  alert(response);
+               }
+            },
+            error: (err) => {
+               throw new Error(err.message);
+            }
+         });
+      });
+      $("#delete").click((event) => {
+         $.post({
+            url: './util/announce_system.php',
+            data: {
+               id: Number($("#idAnnounce").val()),
+               delete: true
             },
             success: (response) => {
                if (response) {
