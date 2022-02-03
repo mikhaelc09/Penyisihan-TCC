@@ -8,6 +8,6 @@
         </h3>
     </div>
     <div class="w-full h-12 flex items-center flex-col justify-between">
-        <a href="../pages//login.php" class="text-lg text-white px-5 py-2 bg-tcc-darkEmerald hover:bg-tcc-emerald rounded-full transition-colors">Join Now</a>
+        <a href="../pages/login.php" class="text-lg text-white px-5 py-2 bg-tcc-darkEmerald hover:bg-tcc-emerald rounded-full transition-colors">Join Now</a>
     </div>
 </div>
