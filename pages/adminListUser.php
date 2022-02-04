@@ -22,7 +22,7 @@ $user = $conn->query("SELECT * From peserta order by score desc")->fetch_all(MYS
         <?php require("../components/adminnav.php") ?>
 
         <main class="w-full flex flex-col items-center py-10 gap-4">
-            <div style="background-color:#d4d0b5" class="relative flex flex-col min-w-0 break-words w-3/4 mb-6 shadow-lg rounded text-black">
+            <div style="background-color:#d4d0b5" class="relative flex flex-col min-w-0 break-words w-1/2 mb-6 shadow-lg rounded text-black">
                 <div class="rounded-t mb-0 px-4 py-3 border-0">
                     <div class="flex flex-wrap items-center">
                         <div class="relative w-full px-4 max-w-full flex-grow flex-1 ">
@@ -30,16 +30,16 @@ $user = $conn->query("SELECT * From peserta order by score desc")->fetch_all(MYS
                         </div>
                     </div>
                 </div>
-                <div class="block w-3/4 overflow-x-auto ">
+                <div class="block w-full overflow-x-auto ">
                     <table class="items-center w-full bg-transparent border-collapse">
                         <thead>
                             <tr>
-                                <th style="background-color: #f5bf6c; border-color:#743a36" class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left text-pink-200">No.</th>
-                                <th style="background-color: #f5bf6c; border-color:#743a36" class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left text-pink-200">Full Name</th>
-                                <th style="background-color: #f5bf6c; border-color:#743a36" class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left text-pink-200">nrp</th>
-                                <th style="background-color: #f5bf6c; border-color:#743a36" class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left text-pink-200">Email</th>
-                                <th style="background-color: #f5bf6c; border-color:#743a36" class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left text-pink-200">Status</th>
-                                <th style="background-color: #f5bf6c; border-color:#743a36" class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left text-pink-200">User's Score</th>
+                                <th style="background-color: #f5bf6c; border-color:#743a36" class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left text-black">No.</th>
+                                <th style="background-color: #f5bf6c; border-color:#743a36" class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left text-black">Full Name</th>
+                                <th style="background-color: #f5bf6c; border-color:#743a36" class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left text-black">nrp</th>
+                                <th style="background-color: #f5bf6c; border-color:#743a36" class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left text-black">Email</th>
+                                <th style="background-color: #f5bf6c; border-color:#743a36" class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left text-black">Status</th>
+                                <th style="background-color: #f5bf6c; border-color:#743a36" class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left text-black">User's Score</th>
                                 <th style="background-color: #f5bf6c; border-color:#743a36" class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left text-pink-200"></th>
                             </tr>
                         </thead>
@@ -53,7 +53,10 @@ $user = $conn->query("SELECT * From peserta order by score desc")->fetch_all(MYS
                                         </th>
                                         <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"><?= $value['nrp'] ?></td>
                                         <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"><?= $value['email'] ?></td>
-                                        <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 items-center"><?= $value['status'] ?></td>
+                                        <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 items-center">
+                                            <?php if ($value['status'] == 1) echo "Active";
+                                            else echo "Non Active" ?>
+                                        </td>
                                         <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
                                             <div class="flex items-center">
                                                 <span class="mr-2"><?= $value['score'] ?></span>
@@ -62,15 +65,6 @@ $user = $conn->query("SELECT * From peserta order by score desc")->fetch_all(MYS
                                                         <div style="width: <?= $value['score'] ?>%;background-color:#de3163" class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center"></div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        </td>
-                                        <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-right">
-                                            <a href="#pablo" class="text-blueGray-500 block py-1 px-3" onclick="openDropdown(event,'table-dark-1-dropdown')">
-                                                <i class="fas fa-ellipsis-v"></i></a>
-                                            <div class="hidden bg-white text-base z-50 float-left py-2 list-none text-left rounded shadow-lg min-w-48" id="table-dark-1-dropdown">
-                                                <a href="#pablo" class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700">Action</a><a href="#pablo" class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700">Another action</a><a href="#pablo" class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700">Something else here</a>
-                                                <div class="h-0 my-2 border border-solid border-blueGray-100"></div>
-                                                <a href="#pablo" class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700">Seprated link</a>
                                             </div>
                                         </td>
                                     </tr>
