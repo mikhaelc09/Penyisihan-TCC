@@ -38,6 +38,12 @@
       </table>
    </div>
    <script>
+      const ToggleStatus = {
+         not_active: 0,
+         active: 1,
+         disable: 2
+      }
+
       class AnnouncementRequests {
          static get ANNOUNCE_PARAMS() {
             return {
@@ -64,11 +70,15 @@
                   id: Number($("#idAnnounce").val()),
                   title: $("#title").val(),
                   body: $("#body").val(),
+                  status: 0,
                   edit: true
                },
                success: (response) => {
                   if (response) {
                      alert(response);
+
+                     const params = AnnouncementRequests.get_params(1);
+                     $.post(params);
                   }
                },
                error: (err) => {
@@ -102,8 +112,10 @@
                },
                success: (response) => {
                   if (response) {
-                     alert(response);
+                     // alert(response);
                      $("#announcementList").html(response);
+
+                     // Edit Announcement
                      $(".edit").each(function (index) {
                         $(this).click((event) => {
                            const targetRow = event.target.getAttribute('id').split('-')[1];
@@ -116,7 +128,52 @@
                            $("#body").val(td[2].innerText);
                         });
                      });
-                     console.log($(".edit")[0]);
+
+                     // Activate Announcement
+                     $(".activate").each(function (index) {
+                        $(this).click((event) => {
+                           const targetRow = event.target.getAttribute('id').split('-')[1];
+
+                           const row = document.querySelector("#row-" + targetRow);
+                           const td = row.querySelectorAll("td");
+
+                           const params = AnnouncementRequests.activate_params(td[0].innerText, ToggleStatus.active);
+                           $.post(params);
+                        });
+                     });
+
+                     // Deactivate Announcement
+                     $(".deactivate").each(function (index) {
+                        $(this).click((event) => {
+                           const targetRow = event.target.getAttribute('id').split('-')[1];
+
+                           const row = document.querySelector("#row-" + targetRow);
+                           const td = row.querySelectorAll("td");
+
+                           const params = AnnouncementRequests.activate_params(td[0].innerText, ToggleStatus.not_active);
+                           $.post(params);
+                        });
+                     });
+
+                  }
+               },
+               error: (err) => {
+                  throw new Error(err.message);
+               }
+            }
+         }
+         static activate_params(id, status) {
+            return {
+               url: './util/announce_system.php',
+               data: {
+                  id: id,
+                  status: status,
+                  toggle: true
+               },
+               success: (response) => {
+                  if (response) {
+                     alert(response);
+                     document.querySelector("#row-"+id).querySelectorAll("td")[4].innerText = status;
                   }
                },
                error: (err) => {
@@ -126,32 +183,26 @@
          }
       }
 
-      $("#announce").click((event) => {
-         const params = AnnouncementRequests.ANNOUNCE_PARAMS;
+      function activateDeactivate(id) {
          $.post({
             url: params.url,
             data: params.data,
             success: params.success,
             error: params.error
          });
+      }
+
+      $("#announce").click((event) => {
+         const params = AnnouncementRequests.ANNOUNCE_PARAMS;
+         $.post(params);
       });
       $("#edit").click((event) => {
          const params = AnnouncementRequests.EDIT_PARAMS;
-         $.post({
-            url: params.url,
-            data: params.data,
-            success: params.success,
-            error: params.error
-         });
+         $.post(params);
       });
       $("#delete").click((event) => {
          const params = AnnouncementRequests.DELETE_PARAMS;
-         $.post({
-            url: params.url,
-            data: params.data,
-            success: params.success,
-            error: params.error
-         });
+         $.post(params);
       });
       $("#get").click((event) => {
          // let target = event.target;
@@ -160,12 +211,7 @@
          // }
 
          const params = AnnouncementRequests.get_params(1);
-         $.post({
-            url: params.url,
-            data: params.data,
-            success: params.success,
-            error: params.error
-         });
+         $.post(params);
       });
 
       

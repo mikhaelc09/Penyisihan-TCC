@@ -34,6 +34,9 @@
       $newAnnounce = new Announcement($_POST['title'], $_POST['body']);
       AnnounceSystem::editAnnouncement($_POST['id'], $newAnnounce);
    }
+   else if (isset($_POST['toggle'])) {
+      AnnounceSystem::toggleAnnouncement($_POST['id'], $_POST['status']);
+   }
    else if (isset($_POST['delete'])) {
       AnnounceSystem::deleteAnnouncement($_POST['id']);
    }

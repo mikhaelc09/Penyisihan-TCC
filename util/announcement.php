@@ -106,6 +106,22 @@
          }
          else echo "Gagal Edit";
       }
+      public static function toggleAnnouncement($id, $status) {
+         global $conn;
+         $stmt = $conn -> prepare("SELECT status FROM announcement where announcement_id = ?");
+         $stmt -> bind_param('i', $id);$stmt -> execute();
+         $result = $stmt -> get_result();
+
+         if ($result -> fetch_row()[0] != $status) {
+            $stmt = $conn -> prepare("UPDATE announcement SET status = ? where announcement_id = ?");
+            $stmt -> bind_param('ii', $status, $id);
+            $success = $stmt -> execute();
+
+            if ($success) echo 'Successfully toggle the announcement.';
+            else echo 'Toggle failed.';
+         }
+         else echo "Toggle is the same. No action is done.";
+      }
       /** Get 10 announcement that when no announcement is found, return a string, else if some announcement is found, return an array of rows.*/
       public static function getAnnouncement($page) {
          if (is_string($page) || is_integer($page)) {
