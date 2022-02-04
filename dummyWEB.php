@@ -21,7 +21,20 @@
       <button id="announce">Create announcement</button>
       <button id="edit">Edit announcement</button>
       <button id="delete">Delete announcement</button>
+      <button id="get">Get announcement</button>
       
+      <table>
+         <thead>
+            <tr>
+               <th>ID</th>
+               <th>Title</th>
+               <th>Body</th>
+               <th>Date Created</th>
+               <th>Status</th>
+            </tr>
+         </thead>
+         <tbody id="announcementList"></tbody>
+      </table>
    </div>
    <script>
       $("#announce").click((event) => {
@@ -71,6 +84,24 @@
             success: (response) => {
                if (response) {
                   alert(response);
+               }
+            },
+            error: (err) => {
+               throw new Error(err.message);
+            }
+         });
+      });
+      $("#get").click((event) => {
+         $.post({
+            url: './util/announce_system.php',
+            data: {
+               page: 1,
+               get: true
+            },
+            success: (response) => {
+               if (response) {
+                  alert(response);
+                  $("#announcementList").html(response);
                }
             },
             error: (err) => {
