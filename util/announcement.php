@@ -93,5 +93,34 @@
          }
          else echo "Gagal Edit";
       }
+      /** Get 10 announcement that when no announcement is found, return a string, else if some announcement is found, return an array of rows.*/
+      public static function getAnnouncement($page) {
+         if (is_string($page) || is_integer($page)) {
+            $limit = 10;
+            $offset = ($page-1) * $limit;
+
+            global $conn;
+            $result = $conn -> query("SELECT COUNT(*) FROM announcement");
+            $count = $result -> fetch_row();
+
+            if ($count && $count[0] > 0) {
+               $stmt = $conn -> prepare("SELECT * FROM announcement LIMIT ? OFFSET ?");
+               $stmt -> bind_param('ii', $limit, $offset);
+               $stmt -> execute();
+               $result = $stmt -> get_result();
+               
+               if ($result -> num_rows > 0) {
+                  $getResult = [];
+                  while ($row = $result -> fetch_assoc()) {
+                     $getResult[] = $row;
+                  }
+                  return $getResult;
+               }
+               else return "<td colspan=5>No announcement is found!</td>";
+            }
+            else return '<td colspan=5>Announcement is empty!</td>';
+         }
+         else return '<td colspan=5>Page is invalid!</td>';
+      }
    }
 ?>
