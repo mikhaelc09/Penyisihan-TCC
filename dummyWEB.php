@@ -37,76 +37,120 @@
       </table>
    </div>
    <script>
-      $("#announce").click((event) => {
-         $.post({
-            url: './util/announce_system.php',
-            data: {
-               title: $("#title").val(),
-               body: $("#body").val(),
-               announce: true
-            },
-            success: (response) => {
-               if (response) {
-                  alert(response);
+      class AnnouncementRequests {
+         static get ANNOUNCE_PARAMS() {
+            return {
+               url: './util/announce_system.php',
+               data: {
+                  title: $("#title").val(),
+                  body: $("#body").val(),
+                  announce: true
+               },
+               success: (response) => {
+                  if (response) {
+                     alert(response);
+                  }
+               },
+               error: (err) => {
+                  throw new Error(err.message);
                }
-            },
-            error: (err) => {
-               throw new Error(err.message);
             }
+         }
+         static get EDIT_PARAMS() {
+            return {
+               url: './util/announce_system.php',
+               data: {
+                  id: Number($("#idAnnounce").val()),
+                  title: $("#title").val(),
+                  body: $("#body").val(),
+                  edit: true
+               },
+               success: (response) => {
+                  if (response) {
+                     alert(response);
+                  }
+               },
+               error: (err) => {
+                  throw new Error(err.message);
+               }
+            }
+         }
+         static get DELETE_PARAMS() {
+            return {
+               url: './util/announce_system.php',
+               data: {
+                  id: Number($("#idAnnounce").val()),
+                  delete: true
+               },
+               success: (response) => {
+                  if (response) {
+                     alert(response);
+                  }
+               },
+               error: (err) => {
+                  throw new Error(err.message);
+               }
+            }
+         }
+         static get_params(page) {
+            return {
+               url: './util/announce_system.php',
+               data: {
+                  page: page,
+                  get: true
+               },
+               success: (response) => {
+                  if (response) {
+                     alert(response);
+                     $("#announcementList").html(response);
+                  }
+               },
+               error: (err) => {
+                  throw new Error(err.message);
+               }
+            }
+         }
+      }
+
+      $("#announce").click((event) => {
+         const params = AnnouncementRequests.ANNOUNCE_PARAMS;
+         $.post({
+            url: params.url,
+            data: params.data,
+            success: params.success,
+            error: params.error
          });
       });
       $("#edit").click((event) => {
+         const params = AnnouncementRequests.EDIT_PARAMS;
          $.post({
-            url: './util/announce_system.php',
-            data: {
-               id: Number($("#idAnnounce").val()),
-               title: $("#title").val(),
-               body: $("#body").val(),
-               edit: true
-            },
-            success: (response) => {
-               if (response) {
-                  alert(response);
-               }
-            },
-            error: (err) => {
-               throw new Error(err.message);
-            }
+            url: params.url,
+            data: params.data,
+            success: params.success,
+            error: params.error
          });
       });
       $("#delete").click((event) => {
+         const params = AnnouncementRequests.DELETE_PARAMS;
          $.post({
-            url: './util/announce_system.php',
-            data: {
-               id: Number($("#idAnnounce").val()),
-               delete: true
-            },
-            success: (response) => {
-               if (response) {
-                  alert(response);
-               }
-            },
-            error: (err) => {
-               throw new Error(err.message);
-            }
+            url: params.url,
+            data: params.data,
+            success: params.success,
+            error: params.error
          });
       });
       $("#get").click((event) => {
+         // let target = event.target;
+         // while (!Number(target.textContent)) {
+         //    target = target.parentElement;
+         // }
+
+         const params = AnnouncementRequests.get_params(1);
          $.post({
-            url: './util/announce_system.php',
-            data: {
-               page: 1,
-               get: true
-            },
-            success: (response) => {
-               if (response) {
-                  alert(response);
-                  $("#announcementList").html(response);
-               }
-            },
-            error: (err) => {
-               throw new Error(err.message);
-            }
+            url: params.url,
+            data: params.data,
+            success: params.success,
+            error: params.error
          });
       });
    </script>
