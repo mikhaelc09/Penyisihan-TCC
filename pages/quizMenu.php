@@ -124,6 +124,7 @@
 
     fetchQuiz();
     function fetchQuiz(){
+        resetList();
         $.ajax({
             type: "POST",
             url: "../ajax/quiz.php",
@@ -134,5 +135,53 @@
                 $("#containerQuiz").append(response);
             }
         });
+    }
+
+    function deleteQuiz(quizId){
+        $.confirm({
+            title : "Delete Confirmation",
+            content : "Are you sure you want delete this quiz?",
+            escapeKey : true,
+            boxWidth: '20%',
+            useBootstrap: false,
+            buttons : {
+                cancel: {},
+                delete:{
+                    btnClass: "btn-red",
+                    action: () => {
+                        $.ajax({
+                            type: "POST",
+                            url: "../ajax/quiz.php",
+                            data: {
+                                "requestType" : "deleteQuiz",
+                                "quizId" : quizId
+                            },
+                            success: function (response) {
+                                $.alert({
+                                    boxWidth:'20%',
+                                    useBootstrap:false,
+                                    content:'Quiz Deleted!',
+                                    autoClose:'confirm|5000',
+                                    buttons:{
+                                        confirm:{}
+                                    }
+                                })
+                                fetchQuiz();
+                            }
+                        });
+                    }
+                }
+            }
+        })
+    }
+
+    function editQuiz(){
+        //use jquery confirm to edit / similar to  form create
+    }
+
+    function resetList(){
+        $("#containerQuiz").children().each((x,y) =>{
+            if(x > 1) y.remove();
+        })
     }
 </script>

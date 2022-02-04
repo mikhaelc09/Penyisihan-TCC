@@ -23,10 +23,13 @@
             echo "<div class='w-4/5 h-24 bg-tcc-darkGray mx-auto my-3 px-4 py-2 flex flex-row justify-between'>";
                 echo "<span class='text-2xl font-bold text-blue-50'>".$qz["quiz_name"]."</span>";
                 echo "<div class='flex justify-end pt-3 gap-x-2 items-end pb-2'>";
-                    echo "<button class='w-24 py-1 bg-tcc-emerald h-10 hover:bg-emerald-300'>Edit</button>";
-                    echo "<button class='w-24 py-1 bg-red-500 h-10 hover:bg-red-400'>Delete</button>";
+                    echo "<button class='w-24 py-1 bg-tcc-emerald h-10 hover:bg-emerald-300' onclick='editQuiz(".$qz["quiz_id"].")'>Edit</button>";
+                    echo "<button class='w-24 py-1 bg-red-500 h-10 hover:bg-red-400' onclick='deleteQuiz(".$qz["quiz_id"].")'>Delete</button>";
                 echo "</div>";
             echo "</div>";
         }
+    }
+    else if($requestType == "deleteQuiz"){
+        $result = $conn->query("DELETE FROM quiz WHERE quiz_id=$quizId");
     }
 ?>
