@@ -61,7 +61,7 @@ $user = $conn->query("SELECT * From peserta order by score desc")->fetch_all(MYS
                                             <div class="flex items-center">
                                                 <span class="mr-2"><?= $value['score'] ?></span>
                                                 <div class="relative w-full">
-                                                    <div class="overflow-hidden h-2 text-xs flex rounded bg-red-200">
+                                                    <div style="border-color:#743a36" class="overflow-hidden h-2 text-xs flex rounded bg-red-200 border-2">
                                                         <div style="width: <?= $value['score'] ?>%;background-color:#de3163" class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center"></div>
                                                     </div>
                                                 </div>
