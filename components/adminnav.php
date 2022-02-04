@@ -3,7 +3,7 @@
         <li class="transition-all hover:scale-110"><a href="">Home</a></li>
         <li class="transition-all hover:scale-110"><a href="">Announcement</a></li>
         <li class="transition-all hover:scale-110"><a href="../pages/quizMenu.php">Quiz</a></li>
-        <li class="transition-all hover:scale-110"><a href="">Users</a></li>
-        <li class="transition-all hover:scale-110"><a href="">Logout</a></li>
+        <li class="transition-all hover:scale-110"><a href="../pages/adminListUser.php">Users</a></li>
+        <li class="transition-all hover:scale-110"><a href="../pages/login.php">Logout</a></li>
     </ul>
 </nav>

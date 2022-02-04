@@ -35,7 +35,7 @@ $user = $conn->query("SELECT * From peserta order by score desc")->fetch_all(MYS
                         <thead>
                             <tr>
                                 <th style="background-color: #f5bf6c; border-color:#743a36" class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left text-black">No.</th>
-                                <th style="background-color: #f5bf6c; border-color:#743a36" class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left text-black">Full Name</th>
+                                <th style="background-color: #f5bf6c; border-color:#743a36" class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-center text-black">Full Name</th>
                                 <th style="background-color: #f5bf6c; border-color:#743a36" class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left text-black">nrp</th>
                                 <th style="background-color: #f5bf6c; border-color:#743a36" class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left text-black">Email</th>
                                 <th style="background-color: #f5bf6c; border-color:#743a36" class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left text-black">Status</th>
