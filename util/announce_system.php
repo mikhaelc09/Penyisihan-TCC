@@ -2,6 +2,7 @@
    require_once './connection.php';
    require_once './announcement.php';
 
+   /** This class is used to modify the database according to what the user needs. Currently it supports static methods for adding, editing, and deleting (although deleting from a database is discouraged!). */
    class AnnounceSystem {
       public static function addAnnouncement($announcement) {
          if ($announcement instanceof Announcement) {
