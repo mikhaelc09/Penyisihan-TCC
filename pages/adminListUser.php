@@ -1,6 +1,6 @@
 <?php
 require_once("../util/connection.php");
-$user = $conn->query("SELECT * From peserta order by score desc")->fetch_all(MYSQLI_ASSOC);
+$users = $conn->query("SELECT * From peserta order by score desc")->fetch_all(MYSQLI_ASSOC);
 
 
 ?>
@@ -44,8 +44,8 @@ $user = $conn->query("SELECT * From peserta order by score desc")->fetch_all(MYS
                             </tr>
                         </thead>
                         <tbody>
-                            <?php if ($user != null) { ?>
-                                <?php foreach ($user as $key => $value) { ?>
+                            <?php if ($users != null) { ?>
+                                <?php foreach ($users as $key => $value) { ?>
                                     <tr>
                                         <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"><?= $key + 1 ?>.</td>
                                         <th class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
