@@ -90,7 +90,7 @@
                                     "quizEndTime" : $("#quizEndTime").val()
                                 },
                                 success: function (response) {
-                                    resetForm()
+                                    resetList()
                                     $.alert({
                                         boxWidth:'20%',
                                         useBootstrap:false,
@@ -123,6 +123,7 @@
     })
 
     fetchQuiz();
+
     function fetchQuiz(){
         resetList();
         $.ajax({
@@ -175,13 +176,96 @@
         })
     }
 
-    function editQuiz(){
+    function editQuiz(quizId){
         //use jquery confirm to edit / similar to  form create
+        let data = "";
+        $.ajax({
+            type: "POST",
+            url: "../ajax/quiz.php",
+            data: {
+                "requestType" : "getAllData",
+                "quizId" : quizId
+            },
+            success: function (response) {
+                data = JSON.parse(response);
+                console.log(data);
+                $.confirm({
+                    title: 'Quiz Creation Form',
+                    content: '<div class="flex flex-col items-center justify-center w-4/5 mx-auto gap-y-3 my-5">'+
+                    '<label class="w-full text-xl">Quiz Name:</label>'+
+                    '<input type="text" id="quizName" class="w-full border-2 py-1 px-2" value="'+data.quiz_name+'">'+
+                    '<label class="w-full text-xl">Quiz Start Time:</label>'+
+                    '<input type="datetime-local" id="quizStartTime" class="w-full border-2 py-1 px-2" value="'+data.time_start+'">'+
+                    '<label class="w-full text-xl">Quiz End Time:</label>'+
+                    '<input type="datetime-local" id="quizEndTime" class="w-full border-2 py-1 px-2" value="'+data.time_end+'">'+
+                    '<input type="hidden" id="quizId" value="'+data.quiz_id+'">'+
+                    '</div>',
+                    boxWidth: '40%',
+                    useBootstrap: false,
+                    draggable: true,
+                    escapeKey:'cancel',
+                    buttons:{
+                        cancel: {
+                            btnClass: 'btn-red'    
+                        },
+                        save: {
+                            action: () => {
+                                if($("#quizName").val().trim() !== "" &&
+                                $("#quizStartTime").val().trim() !== "" &&
+                                $("#quizEndTime").val().trim() !== "" ){
+                                    $.ajax({
+                                        type: "POST",
+                                        url: "../ajax/quiz.php",
+                                        data: {
+                                            "requestType" : "editQuiz",
+                                            "quizId" : $("#quizId").val(),
+                                            "quizName" : $("#quizName").val(),
+                                            "quizStartTime" : $("#quizStartTime").val(),
+                                            "quizEndTime" : $("#quizEndTime").val()
+                                        },
+                                        success: function (response) {
+                                            resetList()
+                                            $.alert({
+                                                boxWidth:'20%',
+                                                useBootstrap:false,
+                                                content:response,
+                                                autoClose:'confirm|3000',
+                                                buttons:{
+                                                    confirm:{}
+                                                }
+                                            });
+                                            fetchQuiz();
+                                        }
+                                    });
+                                }
+                                else{
+                                    $.alert({
+                                        boxWidth:'20%',
+                                        useBootstrap:false,
+                                        content:'All field must be filled!',
+                                        autoClose:'confirm|5000',
+                                        buttons:{
+                                            confirm:{}
+                                        }
+                                    });
+                                }
+                            },
+                            btnClass: 'btn-blue'
+                        }
+                    }
+                });
+            }
+        });
+        
     }
 
     function resetList(){
         $("#containerQuiz").children().each((x,y) =>{
             if(x > 1) y.remove();
         })
+    }
+
+    function detailQuiz(){
+        
     }
 </script>
