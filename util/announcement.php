@@ -60,23 +60,29 @@
             $dateNow = date('Y-m-d');
             $status = $announcement -> get_status();
 
-            global $conn;
-            $stmt = $conn -> prepare("INSERT INTO announcement(judul, body, date_created, status) VALUES (?, ?, ?, ?)");
-            $stmt -> bind_param('sssi', $title, $body, $dateNow, $status);
-            $stmt -> execute();
+            if ($title !== '') {
+               if ($body !== '') {
+                  global $conn;
+                  $stmt = $conn -> prepare("INSERT INTO announcement(judul, body, date_created, status) VALUES (?, ?, ?, ?)");
+                  $stmt -> bind_param('sssi', $title, $body, $dateNow, $status);
+                  $stmt -> execute();
 
-            echo 'Successfully add the announcement';
+                  echo 'Successfully add the announcement';
+               } else echo 'Please insert a body!';
+            } else echo "Please insert a title!";
          }
-         else echo "Gagal add announcement";
+         else echo "Failed to add announcement";
       }
       /** Avoid using this method at all cost, this is just here for emergency purposes only */
       public static function deleteAnnouncement($id) {
-         global $conn;
-         $stmt = $conn -> prepare("DELETE FROM announcement WHERE (announcement_id = ?)");
-         $stmt -> bind_param('i', $id);
-         $stmt -> execute();
+         if ($id > 0) {
+            global $conn;
+            $stmt = $conn -> prepare("DELETE FROM announcement WHERE (announcement_id = ?)");
+            $stmt -> bind_param('i', $id);
+            $stmt -> execute();
 
-         echo 'Successfully delete the announcement';
+            echo 'Successfully delete the announcement';
+         } else echo 'Please insert a valid ID!';
       }
       public static function editAnnouncement($id, $announcement) {
          if ($announcement instanceof Announcement) {
@@ -84,12 +90,19 @@
             $body = $announcement->get_body();
             $status = $announcement->get_status();
 
-            global $conn;
-            $stmt = $conn -> prepare("UPDATE announcement SET judul = ?, body = ?, status = ? where announcement_id = ?");
-            $stmt -> bind_param('ssii', $title, $body, $status, $id);
-            $stmt -> execute();
-
-            echo 'Successfully edit the announcement';
+            if ($id > 0) {
+               if ($title !== '') {
+                  if ($body !== '') {
+                     global $conn;
+                     $stmt = $conn -> prepare("UPDATE announcement SET judul = ?, body = ?, status = ? where announcement_id = ?");
+                     $stmt -> bind_param('ssii', $title, $body, $status, $id);
+                     $success = $stmt -> execute();
+   
+                     if ($success) echo 'Successfully edit the announcement.';
+                     else echo 'Edit failed.';
+                  } else echo 'Please insert a body!';
+               } else echo 'Please insert a title!';
+            }
          }
          else echo "Gagal Edit";
       }
