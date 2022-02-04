@@ -7,12 +7,19 @@
       if (is_array($result)) {
          for ($i=0; $i<count($result); $i++) {
             ?>
-               <tr>
+               <tr id="row-<?=$result[$i]['announcement_id']?>">
                   <td><?=$result[$i]['announcement_id']?></td>
                   <td><?=$result[$i]['judul']?></td>
                   <td><?=$result[$i]['body']?></td>
                   <td><?=$result[$i]['date_created']?></td>
                   <td><?=$result[$i]['status']?></td>
+                  <td><button id="edit-<?=$result[$i]['announcement_id']?>" class='edit'>Edit</button></td>
+                  <td>
+                     <button id="activate-<?=$result[$i]['announcement_id']?>" class='activate'>Activate</button>
+                  </td>
+                  <td>
+                     <button id="deactivate-<?=$result[$i]['announcement_id']?>" class='deactivate'>Deactivate</button>
+                  </td>
                </tr>
             <?php
          }

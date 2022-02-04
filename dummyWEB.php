@@ -31,6 +31,7 @@
                <th>Body</th>
                <th>Date Created</th>
                <th>Status</th>
+               <th colspan=3>Actions</th>
             </tr>
          </thead>
          <tbody id="announcementList"></tbody>
@@ -103,6 +104,19 @@
                   if (response) {
                      alert(response);
                      $("#announcementList").html(response);
+                     $(".edit").each(function (index) {
+                        $(this).click((event) => {
+                           const targetRow = event.target.getAttribute('id').split('-')[1];
+
+                           const row = document.querySelector("#row-" + targetRow);
+                           const td = row.querySelectorAll("td");
+
+                           $("#idAnnounce").val(td[0].innerText);
+                           $("#title").val(td[1].innerText);
+                           $("#body").val(td[2].innerText);
+                        });
+                     });
+                     console.log($(".edit")[0]);
                   }
                },
                error: (err) => {
@@ -153,6 +167,8 @@
             error: params.error
          });
       });
+
+      
    </script>
 </body>
 </html>
