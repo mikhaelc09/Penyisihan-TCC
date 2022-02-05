@@ -18,7 +18,7 @@
 </head>
 <body class="bg-tcc-darkBlue">
    <header class="back-nav">
-      <a href="./index.php">Go Back</a>
+      <a href="./start.php">Go Back</a>
    </header>
    <main class="user-announcement-main text-white">
       <h1 class="text-5xl">Announcements:</h1>
