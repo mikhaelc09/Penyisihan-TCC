@@ -31,7 +31,7 @@ if (isset($_POST['register'])) {
             $stmt = $conn->prepare("INSERT INTO `peserta` (`full_name`, `email`, `password`, `nrp`, `line_id`, `status`, `score`) VALUES (?,?,?,?,?,?,?)");
             $stmt->bind_param("sssssii", $full_name, $email, $password, $nrp, $line_id, $status, $score);
             $stmt->execute();
-            echo "<script>alert('You have successfully register')</script>";
+            echo "<script>alert('You have a new account')</script>";
             header('Location:login.php');
         }
     } else {
