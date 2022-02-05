@@ -97,4 +97,16 @@ thead {
     border-bottom: 1px solid white;
 }
 
-td { padding-left: 0.2rem; }
+td {
+    padding: 0.5rem 0;
+    padding-left: 0.2rem;
+}
+
+/* User Announcement */
+.text-white {
+    color: white;
+}
+
+.user-announcement-main {
+    padding: 2rem;
+}

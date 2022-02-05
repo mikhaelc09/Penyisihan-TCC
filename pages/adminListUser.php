@@ -38,7 +38,7 @@ $users = $conn->query("SELECT * From peserta order by score desc")->fetch_all(MY
                                 <th style="background-color: #f5bf6c; border-color:#743a36" class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-center text-black">Full Name</th>
                                 <th style="background-color: #f5bf6c; border-color:#743a36" class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left text-black">nrp</th>
                                 <th style="background-color: #f5bf6c; border-color:#743a36" class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left text-black">Email</th>
-                                <th style="background-color: #f5bf6c; border-color:#743a36" class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left text-black">Status</th>
+                                <th style="background-color: #f5bf6c; border-color:#743a36" class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left text-black">Line ID</th>
                                 <th style="background-color: #f5bf6c; border-color:#743a36" class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left text-black">User's Score</th>
                                 <th style="background-color: #f5bf6c; border-color:#743a36" class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left text-pink-200"></th>
                             </tr>
@@ -54,8 +54,7 @@ $users = $conn->query("SELECT * From peserta order by score desc")->fetch_all(MY
                                         <td style="background-color: #d4d0b5;" class="text-black border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"><?= $value['nrp'] ?></td>
                                         <td style="background-color: #d4d0b5;" class="text-black border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"><?= $value['email'] ?></td>
                                         <td style="background-color: #d4d0b5;" class="text-black border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 items-center">
-                                            <?php if ($value['status'] == 1) echo "Active";
-                                            else echo "Non Active" ?>
+                                            <?= $value['line_id'] ?>
                                         </td>
                                         <td style="background-color: #d4d0b5;" class="text-black border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
                                             <div class="flex items-center">
