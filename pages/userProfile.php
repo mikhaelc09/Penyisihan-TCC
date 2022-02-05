@@ -35,12 +35,12 @@ if (isset($_SESSION['email']) && $_SESSION['email'] != "admin") {
                         The Participant of Top Coder Competition (TCC) 2022
                     </p>
                 </div>
-                <!-- <hr class="mt-8">
+                <hr class="mt-8">
                 <a style="background-color:blue" href="" class="flex p-4">
                     <div class="w-full text-center text-white">
-                        Edit Profile
+                        Change Password
                     </div>
-                </a> -->
+                </a>
             </div>
         </div>
 </body>

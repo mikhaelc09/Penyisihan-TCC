@@ -46,18 +46,18 @@ $users = $conn->query("SELECT * From peserta order by score desc")->fetch_all(MY
                         <tbody>
                             <?php if ($users != null) { ?>
                                 <?php foreach ($users as $key => $value) { ?>
-                                    <tr>
-                                        <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"><?= $key + 1 ?>.</td>
-                                        <th class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                                    <tr class="">
+                                        <td style="background-color: #d4d0b5;" class="text-black border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"><?= $key + 1 ?>.</td>
+                                        <th style="background-color: #d4d0b5;" class="text-black border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
                                             <span class="font-bold text-black align-middle"><?= $value['full_name'] ?></span>
                                         </th>
-                                        <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"><?= $value['nrp'] ?></td>
-                                        <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"><?= $value['email'] ?></td>
-                                        <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 items-center">
+                                        <td style="background-color: #d4d0b5;" class="text-black border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"><?= $value['nrp'] ?></td>
+                                        <td style="background-color: #d4d0b5;" class="text-black border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"><?= $value['email'] ?></td>
+                                        <td style="background-color: #d4d0b5;" class="text-black border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 items-center">
                                             <?php if ($value['status'] == 1) echo "Active";
                                             else echo "Non Active" ?>
                                         </td>
-                                        <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                                        <td style="background-color: #d4d0b5;" class="text-black border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
                                             <div class="flex items-center">
                                                 <span class="mr-2"><?= $value['score'] ?></span>
                                                 <div class="relative w-full">
