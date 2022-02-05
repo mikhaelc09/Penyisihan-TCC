@@ -151,5 +151,20 @@
          }
          else return '<td colspan=5>Page is invalid!</td>';
       }
+      public static function getUserAnnouncement() {
+         global $conn;
+         $stmt = $conn -> prepare("SELECT DISTINCT * FROM announcement ORDER BY announcement_id DESC");
+         $stmt -> execute();
+         $result = $stmt -> get_result();
+         
+         if ($result -> num_rows > 0) {
+            $getResult = [];
+            while ($row = $result -> fetch_assoc()) {
+               $getResult[] = $row;
+            }
+            return $getResult;
+         }
+         else return "<td colspan=5>No announcement is found!</td>";
+      }
    }
 ?>

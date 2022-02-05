@@ -26,6 +26,22 @@
       }
       else echo $result;
    }
+   else if (isset($_POST['get_user'])) {
+      $result = AnnounceSystem::getUserAnnouncement();
+
+      if (is_array($result)) {
+         for ($i=0; $i<count($result); $i++) {
+            ?>
+               <tr id="row-<?=$result[$i]['announcement_id']?>">
+                  <td><?=$result[$i]['judul']?></td>
+                  <td><?=$result[$i]['body']?></td>
+                  <td><?=$result[$i]['date_created']?></td>
+               </tr>
+            <?php
+         }
+      }
+      else echo $result;
+   }
    else if (isset($_POST['announce'])) {
       $newAnnounce = new Announcement($_POST['title'], $_POST['body']);
       AnnounceSystem::addAnnouncement($newAnnounce);
