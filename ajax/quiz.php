@@ -23,7 +23,7 @@
             echo "<div class='w-4/5 h-24 bg-tcc-darkGray mx-auto my-3 px-4 py-2 flex flex-row justify-between'>";
                 echo "<span class='text-2xl font-bold text-blue-50'>".$qz["quiz_name"]."</span>";
                 echo "<div class='flex justify-end pt-3 gap-x-2 items-end pb-2'>";
-                echo "<button class='w-24 py-1 bg-blue-500 h-10 hover:bg-red-400' onclick='detailQuiz(".$qz["quiz_id"].")'>Detail</button>";
+                    echo "<a href='../pages/quizDetail.php?quiz_id=".$qz["quiz_id"]."'><button class='w-24 py-1 bg-blue-500 h-10 hover:bg-blue-400'>Detail</button></a>";
                     echo "<button class='w-24 py-1 bg-tcc-emerald h-10 hover:bg-emerald-300' onclick='editQuiz(".$qz["quiz_id"].")'>Edit</button>";
                     echo "<button class='w-24 py-1 bg-red-500 h-10 hover:bg-red-400' onclick='deleteQuiz(".$qz["quiz_id"].")'>Delete</button>";
                 echo "</div>";
@@ -44,5 +44,13 @@
         $stmt = $conn->query("SELECT quiz_id, quiz_name, DATE_FORMAT(time_start, '%Y-%m-%dT%H:%i') as time_start, DATE_FORMAT(time_end, '%Y-%m-%dT%H:%i') as time_end , status FROM quiz WHERE quiz_id=$quizId");
         $quiz = $stmt->fetch_assoc();
         echo json_encode($quiz);
+    }
+    else if($requestType == "toggleStatus"){
+        echo $status;
+        $stmt = $conn->prepare("UPDATE quiz SET status=? WHERE quiz_id=?");
+        $stmt->bind_param("ii",$status, $quiz_id);
+        if($stmt->execute()){
+            echo "Berhasil Toggle Status";
+        }
     }
 ?>

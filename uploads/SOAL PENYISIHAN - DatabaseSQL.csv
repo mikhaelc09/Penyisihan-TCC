@@ -1,0 +1,4 @@
+Question,Option 1,Option 2,Option 3,Option 4,Option 5,Correct Answer,Time,Image Link
+"Yang mana yang termasuk primary Key? staff(staff_id, nama, alamat, email, tgl_lahir)",nama,alamat,staff_id,tgl_lahir,email,3,30,
+Apakah nama dari simbol yang berada pada ages,weak entity,multi value entity,weak key attribute,multi value attribute,derived attributes,5,30,https://www.coursehero.com/qa/attachment/15176746/
+Apakah jenis relasi antara negara dan ibu kota,no relation,one to one,one to many,many to one,many to many,2,30,

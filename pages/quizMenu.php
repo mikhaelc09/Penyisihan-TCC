@@ -1,6 +1,3 @@
-<?php
-    
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,7 +22,6 @@
                     <span class='text-xl font-bold text-blue-50'>Add New Quiz</span>
                     <span class="text-4xl text-blue-50">+</span>
                 </div>
-                
             </div >
         </main>
         
