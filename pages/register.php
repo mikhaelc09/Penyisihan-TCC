@@ -8,6 +8,7 @@ if (isset($_POST['register'])) {
     $password = $_POST['password'];
     $confirm = $_POST['confirm'];
     $nrp = $_POST['nrp'];
+    $line_id = $_POST['line_id'];
     if ($password == $confirm) {
         $password = md5($confirm);
         $status = 1;
@@ -27,8 +28,8 @@ if (isset($_POST['register'])) {
         if ($found) {
             echo "<script>alert('Email is already used')</script>";
         } else {
-            $stmt = $conn->prepare("INSERT INTO `peserta` (`full_name`, `email`, `password`, `nrp`, `status`, `score`) VALUES (?,?,?,?,?,?)");
-            $stmt->bind_param("ssssii", $full_name, $email, $password, $nrp, $status, $score);
+            $stmt = $conn->prepare("INSERT INTO `peserta` (`full_name`, `email`, `password`, `nrp`, `line_id`, `status`, `score`) VALUES (?,?,?,?,?,?)");
+            $stmt->bind_param("sssssii", $full_name, $email, $password, $nrp, $line_id, $status, $score);
             $stmt->execute();
             echo "<script>alert('You have successfully register')</script>";
         }
@@ -77,6 +78,10 @@ if (isset($_POST['register'])) {
                     <div class="flex flex-row w-4/5 items-center">
                         <label for="nrp" class="px-5">NRP</label>
                         <input type="text" name="nrp" placeholder="NRP" class="px-4 py-2 rounded-md w-4/5">
+                    </div>
+                    <div class="flex flex-row w-4/5 items-center">
+                        <label for="nrp" class="px-5">Line ID</label>
+                        <input type="text" name="line_id" placeholder="line" class="px-4 py-2 rounded-md w-4/5">
                     </div>
                     <input type="submit" value="Register" name="register" class="w-4/5 bg-tcc-darkEmerald rounded-md py-1 text-xl cursor-pointer hover:bg-tcc-emerald">
                 </div>
