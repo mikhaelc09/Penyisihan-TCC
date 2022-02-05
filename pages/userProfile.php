@@ -1,7 +1,8 @@
 <?php
 require_once("../util/connection.php");
 if (isset($_SESSION['email']) && $_SESSION['email'] != "admin") {
-    $user = $conn->query("SELECT * From peserta order by score desc")->fetch_assoc();
+    $email = $_SESSION['email'];
+    $user = $conn->query("SELECT * From peserta where email = '$email'")->fetch_assoc();
 } else {
     $user = "";
 }
@@ -23,7 +24,7 @@ if (isset($_SESSION['email']) && $_SESSION['email'] != "admin") {
 <body>
     <div class="w-full h-screen bg-tcc-darkBlue">
         <?php require("../components/adminnav.php") ?>
-        <div class="bg-gray-200 font-sans h-screen w-full flex flex-row justify-center items-center">
+        <div class="bg-gray-200 h-3/4 font-sans w-full flex flex-row justify-center items-center">
             <div class="card w-96 mx-auto bg-white  shadow-xl hover:shadow">
                 <img style="width:100px;height:100px" class="mx-auto rounded-full -mt-20" src="https://static.vecteezy.com/system/resources/previews/002/318/271/non_2x/user-profile-icon-free-vector.jpg" alt="">
                 <div class="text-center mt-2 text-3xl font-medium"><?= $user['full_name'] ?></div>
@@ -35,17 +36,11 @@ if (isset($_SESSION['email']) && $_SESSION['email'] != "admin") {
                     </p>
                 </div>
                 <!-- <hr class="mt-8">
-                <div class="flex p-4">
-                    <div class="w-1/2 text-center">
-                        <span class="font-bold">1.8 k</span> Followers
+                <a style="background-color:blue" href="" class="flex p-4">
+                    <div class="w-full text-center text-white">
+                        Edit Profile
                     </div>
-                    <div class="w-0 border border-gray-300">
-
-                    </div>
-                    <div class="w-1/2 text-center">
-                        <span class="font-bold">2.0 k</span> Following
-                    </div>
-                </div> -->
+                </a> -->
             </div>
         </div>
 </body>
