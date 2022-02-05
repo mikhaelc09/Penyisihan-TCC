@@ -19,7 +19,7 @@
 </head>
 <body class="bg-tcc-darkBlue">
    <nav class="back-nav">
-      <a href="./start.php">Go back</a>
+      <a href="./adminStart.php">Go back</a>
    </nav>
    <aside class="announce-create">
       <h1 class="text-5xl">Create Announcement:</h1>
