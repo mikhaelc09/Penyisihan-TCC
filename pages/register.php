@@ -28,10 +28,11 @@ if (isset($_POST['register'])) {
         if ($found) {
             echo "<script>alert('Email is already used')</script>";
         } else {
-            $stmt = $conn->prepare("INSERT INTO `peserta` (`full_name`, `email`, `password`, `nrp`, `line_id`, `status`, `score`) VALUES (?,?,?,?,?,?)");
+            $stmt = $conn->prepare("INSERT INTO `peserta` (`full_name`, `email`, `password`, `nrp`, `line_id`, `status`, `score`) VALUES (?,?,?,?,?,?,?)");
             $stmt->bind_param("sssssii", $full_name, $email, $password, $nrp, $line_id, $status, $score);
             $stmt->execute();
             echo "<script>alert('You have successfully register')</script>";
+            header('Location:login.php');
         }
     } else {
         echo "<script>alert('Password and confirm password is different')</script>";
@@ -59,7 +60,7 @@ if (isset($_POST['register'])) {
         <div class="flex h-2/3 bg-transparent">
             <div class="m-auto">
                 <div>
-                    <form class="mt-5 bg-white rounded-lg shadow">
+                    <form class="mt-5 bg-white rounded-lg shadow" method="POST" action="">
                         <div class="flex">
                             <div class="flex-1 py-5 pl-5 overflow-hidden">
                                 <h1 class="pl-2 inline text-2xl font-semibold leading-none">Register</h1>
@@ -80,7 +81,7 @@ if (isset($_POST['register'])) {
                         <hr class="mt-4">
                         <div class="flex flex-row-reverse p-3">
                             <div class="flex-initial pl-3">
-                                <button type="button" class="flex items-center px-5 py-2.5 font-medium tracking-wide text-white capitalize   bg-black rounded-md hover:bg-gray-800  focus:outline-none focus:bg-gray-900  transition duration-300 transform active:scale-95 ease-in-out">
+                                <button type="submit" name="register" value="1" class="flex items-center px-5 py-2.5 font-medium tracking-wide text-white capitalize   bg-black rounded-md hover:bg-gray-800  focus:outline-none focus:bg-gray-900  transition duration-300 transform active:scale-95 ease-in-out">
                                     <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#FFFFFF">
                                         <path d="M0 0h24v24H0V0z" fill="none"></path>
                                         <path d="M5 5v14h14V7.83L16.17 5H5zm7 13c-1.66 0-3-1.34-3-3s1.34-3 3-3 3 1.34 3 3-1.34 3-3 3zm3-8H6V6h9v4z" opacity=".3"></path>
@@ -89,16 +90,6 @@ if (isset($_POST['register'])) {
                                     <span class="pl-2 mx-1">Save</span>
                                 </button>
                             </div>
-                            <!-- <div class="flex-initial">
-                                <button type="button" class="flex items-center px-5 py-2.5 font-medium tracking-wide text-black capitalize rounded-md  hover:bg-red-200 hover:fill-current hover:text-red-600  focus:outline-none  transition duration-300 transform active:scale-95 ease-in-out">
-                                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px">
-                                        <path d="M0 0h24v24H0V0z" fill="none"></path>
-                                        <path d="M8 9h8v10H8z" opacity=".3"></path>
-                                        <path d="M15.5 4l-1-1h-5l-1 1H5v2h14V4zM6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM8 9h8v10H8V9z"></path>
-                                    </svg>
-                                    <span class="pl-2 mx-1">Clear</span>
-                                </button>
-                            </div> -->
                         </div>
                     </form>
                 </div>
