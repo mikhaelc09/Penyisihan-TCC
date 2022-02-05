@@ -125,7 +125,7 @@
       /** Get 10 announcement that when no announcement is found, return a string, else if some announcement is found, return an array of rows.*/
       public static function getAnnouncement($page) {
          if (is_string($page) || is_integer($page)) {
-            $limit = 10;
+            $limit = 1000; // Practicaly disabling the limit
             $offset = ($page-1) * $limit;
 
             global $conn;

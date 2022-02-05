@@ -79,6 +79,10 @@
                success: (response) => {
                   if (response) {
                      alert(response);
+
+                     // Get the new list
+                     const params = AnnouncementRequests.get_params(1);
+                     $.post(params);
                   }
                },
                error: (err) => {
@@ -236,6 +240,11 @@
          const params = AnnouncementRequests.get_params(1);
          $.post(params);
       });
+
+      document.addEventListener("DOMContentLoaded", () => {
+         const params = AnnouncementRequests.get_params(1);
+         $.post(params);
+      })
    </script>
 </body>
 </html>
