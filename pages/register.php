@@ -31,7 +31,7 @@ if (isset($_POST['register'])) {
             $stmt = $conn->prepare("INSERT INTO `peserta` (`full_name`, `email`, `password`, `nrp`, `line_id`, `status`, `score`) VALUES (?,?,?,?,?,?,?)");
             $stmt->bind_param("sssssii", $full_name, $email, $password, $nrp, $line_id, $status, $score);
             $stmt->execute();
-            echo "<script>alert('You have successfully register')</script>";
+            echo "<script>alert('You have a new account')</script>";
             header('Location:login.php');
         }
     } else {
@@ -81,7 +81,7 @@ if (isset($_POST['register'])) {
                         <hr class="mt-4">
                         <div class="flex flex-row-reverse p-3">
                             <div class="flex-initial pl-3">
-                                <button type="submit" name="register" value="1" class="flex items-center px-5 py-2.5 font-medium tracking-wide text-white capitalize   bg-black rounded-md hover:bg-gray-800  focus:outline-none focus:bg-gray-900  transition duration-300 transform active:scale-95 ease-in-out">
+                                <button type="submit" name="register" value="1" class="flex items-center px-5 py-2.5 font-medium tracking-wide text-white capitalize   bg-blue-600 rounded-md hover:bg-gray-800  focus:outline-none focus:bg-gray-900  transition duration-300 transform active:scale-95 ease-in-out">
                                     <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#FFFFFF">
                                         <path d="M0 0h24v24H0V0z" fill="none"></path>
                                         <path d="M5 5v14h14V7.83L16.17 5H5zm7 13c-1.66 0-3-1.34-3-3s1.34-3 3-3 3 1.34 3 3-1.34 3-3 3zm3-8H6V6h9v4z" opacity=".3"></path>

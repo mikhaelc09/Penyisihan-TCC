@@ -37,7 +37,7 @@ if (isset($_SESSION['email']) && $_SESSION['email'] != "admin") {
                     </p>
                 </div>
                 <hr class="mt-8">
-                <a href="" class="flex p-4 bg-blue-600">
+                <a href="changePassword.php" class="flex p-4 bg-blue-600">
                     <div class="w-full text-center text-white">
                         Change Password
                     </div>
