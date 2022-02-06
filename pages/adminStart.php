@@ -1,5 +1,6 @@
 <?php
 require_once("../util/connection.php");
+require_once("../util/adminValidation.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">

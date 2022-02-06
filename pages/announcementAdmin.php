@@ -1,5 +1,6 @@
 <?php
    require_once '../util/connection.php';
+   require_once("../util/adminValidation.php");
    // if (!isset($_SESSION['TCC_ADMIN'])) {
    //    header("Location: ../index.php");
    //    exit;

@@ -1,5 +1,6 @@
 <?php
 require_once("../util/connection.php");
+require_once("../util/adminValidation.php");
 $users = $conn->query("SELECT * From peserta where status = 1 order by score desc")->fetch_all(MYSQLI_ASSOC);
 
 

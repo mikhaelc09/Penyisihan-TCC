@@ -1,5 +1,6 @@
 <?php
     require_once("../util/connection.php");
+    require_once("../util/adminValidation.php");
     if(isset($_GET["quiz_id"])){
         $quiz_id = $_GET["quiz_id"];
         $stmt = $conn->query("SELECT * FROM quiz WHERE quiz_id=$quiz_id");
