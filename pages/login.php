@@ -1,5 +1,14 @@
 <?php
 require("../util/connection.php");
+if(isset($_SESSION["email"])){
+    if($_SESSION["email"] == "admin"){
+        header("Location: ../pages/adminStart.php");
+    }
+    else{
+        header("Location: ../pages/userStart.php");
+    }
+}
+
 $peserta = $conn->query("SELECT * From peserta")->fetch_all(MYSQLI_ASSOC);
 if (isset($_POST['login'])) {
     $email = $_POST['email'];

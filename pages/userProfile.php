@@ -23,7 +23,7 @@ if (isset($_SESSION['email']) && $_SESSION['email'] != "admin") {
 
 <body>
     <div class="w-full h-screen bg-tcc-darkBlue">
-        <?php require("../components/adminnav.php") ?>
+        <?php require("../components/navbar.php") ?>
         <div class="bg-tcc-darkBlue h-3/4 font-sans w-full flex flex-row justify-center items-center">
             <div class="card w-96 mx-auto bg-white  shadow-xl hover:shadow">
                 <img style="width:100px;height:100px" class="mx-auto rounded-full -mt-20" src="https://static.vecteezy.com/system/resources/previews/002/318/271/non_2x/user-profile-icon-free-vector.jpg" alt="">
