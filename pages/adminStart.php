@@ -1,5 +1,5 @@
 <?php
-require_once("../util/connection.php");
+session_start();
 require_once("../util/adminValidation.php");
 ?>
 <!DOCTYPE html>
