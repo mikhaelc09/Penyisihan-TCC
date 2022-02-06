@@ -17,19 +17,20 @@
         <?php require("../components/navbar.php") ?>
         <main class="w-full flex flex-col items-center py-10 gap-4">
 
-            <a href="./announcementAdmin.php" class="w-1/3">
+            <div class="w-1/3 h-24 rounded-lg shadow-md bg-emerald-200 border-tcc-emerald border-4  flex flex-col px-5 py-4">
+                <h1 class="text-xl font-bold">Guide:</h1>
+                <p>To check your quiz, please check the announcement page</p>
+            </div>
+
+            <a href="./userAnnouncement.php" class="w-1/3">
                 <section class="h-48 rounded-lg shadow-md bg-tcc-darkGray cursor-pointer flex items-center justify-center hover:bg-tcc-lightGray hover:underline underline-offset-4">
                     <h1 class="text-3xl font-bold">Announcement</h1>
                 </section>
             </a>
 
-            <a href="../pages/quizMenu.php" class="w-1/3"><section class="h-48 rounded-lg shadow-md bg-tcc-darkGray cursor-pointer flex items-center justify-center hover:bg-tcc-lightGray hover:underline underline-offset-4">
-                <h1 class="text-3xl font-bold">Quiz</h1>
-            </section></a>
-
-            <a href="../pages/adminListUser.php" class="w-1/3">
+            <a href="./userProfile.php" class="w-1/3">
                 <section class="h-48 rounded-lg shadow-md bg-tcc-darkGray cursor-pointer flex items-center justify-center hover:bg-tcc-lightGray hover:underline underline-offset-4">
-                    <h1 class="text-3xl font-bold">Users</h1>
+                    <h1 class="text-3xl font-bold">Profile</h1>
                 </section>
             </a>
 
