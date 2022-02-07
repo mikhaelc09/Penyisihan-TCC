@@ -110,3 +110,24 @@ td {
 .user-announcement-main {
     padding: 2rem;
 }
+
+.card {
+    border-radius: 6px;
+    box-shadow: 0 0 -4px 16px darkgray;
+    padding: 1rem;
+    color: black;
+    background-color: white;
+    margin: 6px 6px;
+}
+.card .card-date {
+    text-align: right;
+    font-size: 1rem;
+    color: rgb(46, 46, 46);
+}
+.card .card-title {
+    font-size: 1.4rem;
+    border-bottom: 1px solid black;
+}
+.card .card-body {
+    font-size: 1.2rem;
+}

@@ -33,11 +33,13 @@
          for ($i=0; $i<count($result); $i++) {
             if ($result[$i]['status'] == 1) {
                ?>
-                  <tr id="row-<?=$result[$i]['announcement_id']?>">
-                     <td><?=$result[$i]['judul']?></td>
-                     <td><?=$result[$i]['body']?></td>
-                     <td><?=$result[$i]['date_created']?></td>
-                  </tr>
+                  <div class="card" id="<?=$result[$i]['announcement_id']?>">
+                     <div class="card-date"><?=$result[$i]['date_created']?></div>
+                     <div class="card-title"><?=$result[$i]['judul']?></div>
+                     <div class="card-body">
+                        <?=$result[$i]['body']?>
+                     </div>
+                  </div>
                <?php
             }
          }

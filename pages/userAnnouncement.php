@@ -22,16 +22,7 @@
    <?php require("../components/navbar.php") ?>
    <main class="user-announcement-main text-white">
       <h1 class="text-5xl">Announcements:</h1>
-      <table class="announce-table">
-         <thead>
-            <tr>
-               <th>Title</th>
-               <th>Body</th>
-               <th>Date Created</th>
-            </tr>
-         </thead>
-         <tbody id="announcementList"></tbody>
-      </table>
+      <div id="announcementList"></div>
    </main>
    <footer>
 
