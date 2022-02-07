@@ -31,13 +31,15 @@
 
       if (is_array($result)) {
          for ($i=0; $i<count($result); $i++) {
-            ?>
-               <tr id="row-<?=$result[$i]['announcement_id']?>">
-                  <td><?=$result[$i]['judul']?></td>
-                  <td><?=$result[$i]['body']?></td>
-                  <td><?=$result[$i]['date_created']?></td>
-               </tr>
-            <?php
+            if ($result[$i]['status'] == 1) {
+               ?>
+                  <tr id="row-<?=$result[$i]['announcement_id']?>">
+                     <td><?=$result[$i]['judul']?></td>
+                     <td><?=$result[$i]['body']?></td>
+                     <td><?=$result[$i]['date_created']?></td>
+                  </tr>
+               <?php
+            }
          }
       }
       else echo $result;
