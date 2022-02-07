@@ -3,7 +3,7 @@
    //    header("Location: ./pages/start.php");
    //    exit;
    // }
-   session_start();
+   require_once("../util/connection.php");
    require_once("../util/userValidation.php");
 ?>
 
