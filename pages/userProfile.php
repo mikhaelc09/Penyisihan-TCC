@@ -1,5 +1,7 @@
 <?php
 require_once("../util/connection.php");
+require_once("../util/userValidation.php");
+require_once("../util/inQuizChecker.php");
 if (isset($_SESSION['email']) && $_SESSION['email'] != "admin") {
     $email = $_SESSION['email'];
     $user = $conn->query("SELECT * From peserta where email = '$email'")->fetch_assoc();

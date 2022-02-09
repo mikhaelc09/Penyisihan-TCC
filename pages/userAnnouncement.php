@@ -5,6 +5,7 @@
    // }
    require_once("../util/connection.php");
    require_once("../util/userValidation.php");
+   require_once("../util/inQuizChecker.php");
 ?>
 
 <!DOCTYPE html>

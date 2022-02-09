@@ -4,6 +4,6 @@
         <li class="transition-all hover:scale-110"><a href="../pages/announcementAdmin.php">Announcement</a></li>
         <li class="transition-all hover:scale-110"><a href="../pages/quizMenu.php">Quiz</a></li>
         <li class="transition-all hover:scale-110"><a href="../pages/adminListUser.php">Users</a></li>
-        <li class="transition-all hover:scale-110"><a href="../pages/login.php">Logout</a></li>
+        <li class="transition-all hover:scale-110"><a href="../util/logout.php">Logout</a></li>
     </ul>
 </nav>
