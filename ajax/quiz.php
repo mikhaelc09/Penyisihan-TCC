@@ -53,4 +53,49 @@
             echo "Berhasil Toggle Status";
         }
     }
+    else if($requestType == "getQuestion"){
+        if($_COOKIE["counter"] < count(json_decode($_COOKIE["sequence"]))){
+            $problemNumber = json_decode($_COOKIE["sequence"])[$_COOKIE["counter"]];
+            $stmt = $conn->query("SELECT soal_id, pertanyaan, pilihan_a, pilihan_b, pilihan_c, pilihan_d, pilihan_e, durasi, gambar_soal FROM soal WHERE soal_id=$problemNumber");
+            $s = $stmt->fetch_assoc();
+            $s["counter"] = $_COOKIE["counter"];
+            echo json_encode($s);
+            setcookie("counter", $_COOKIE["counter"]+1, $_COOKIE["endTime"], '/');
+        }
+        else{
+            echo "Finish";
+        }
+    }
+    else if($requestType == "checkAnswer"){
+        $stmt = $conn->query("SELECT jawaban_benar FROM soal WHERE soal_id=$soal_id");
+        $soal = $stmt->fetch_assoc();
+        $score = ($soal["jawaban_benar"] == $choice)?1:0;
+        echo $score;
+        $emailUser = $_SESSION["email"];
+        $stmt = $conn->query("SELECT score FROM peserta WHERE email='$emailUser'");
+        $pst = $stmt->fetch_assoc();
+        $scoreBaru = $pst["score"] +$score;
+        $stmt = $conn->prepare("UPDATE peserta SET score=$scoreBaru WHERE email='$emailUser'");
+        $stmt->execute();
+    }
+    else if($requestType == "getFinalScore"){
+        $emailUser = $_SESSION["email"];
+        $stmt = $conn->query("SELECT user_id, score FROM peserta WHERE email='$emailUser'");
+        $peserta = $stmt->fetch_assoc();
+        $quiz_id = $_COOKIE["quizid"]??$_SESSION["quizid"];
+        $stmt = $conn->query("SELECT COUNT(*) as jumlah FROM soal WHERE quiz_id=$quiz_id");
+        $soal = $stmt->fetch_assoc();
+        $finalScore = ROUND($peserta["score"]/$soal["jumlah"]*100);
+        echo $finalScore;
+        $stmt = $conn->prepare("INSERT INTO quiz_summary(user_id, score) VALUES(?,?)");
+        $stmt->bind_param("ii",$peserta["user_id"], $peserta["score"]);
+        $stmt->execute();
+        setcookie("quizid","", time() - 10000, '/');
+        setcookie("sequence","", time()  - 10000, '/');
+        setcookie("counter", "", time() - 10000, '/');
+        setcookie("startTime", "" , time() - 10000, '/');
+        setcookie("endTime", "" , time() - 10000, '/');
+        if(isset($_SESSION["quizid"]))
+            unset($_SESSION["quizid"]);
+    }
 ?>
