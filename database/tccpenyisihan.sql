@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 03, 2022 at 08:33 AM
+-- Generation Time: Feb 09, 2022 at 04:28 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.10
 
@@ -29,7 +29,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `announcement` (
   `announcement_id` int(11) NOT NULL,
-  `judul` int(255) NOT NULL,
+  `judul` varchar(255) NOT NULL,
   `body` varchar(1024) NOT NULL,
   `date_created` date NOT NULL,
   `status` int(11) NOT NULL
@@ -48,8 +48,13 @@ CREATE TABLE `peserta` (
   `password` varchar(255) NOT NULL,
   `nrp` varchar(255) NOT NULL,
   `status` int(11) NOT NULL,
-  `score` int(11) NOT NULL
+  `score` int(11) NOT NULL,
+  `line_id` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `peserta`
+--
 
 -- --------------------------------------------------------
 
@@ -60,10 +65,30 @@ CREATE TABLE `peserta` (
 CREATE TABLE `quiz` (
   `quiz_id` int(11) NOT NULL,
   `quiz_name` varchar(255) NOT NULL,
-  `time_start` date NOT NULL,
-  `time_end` date NOT NULL,
+  `time_start` datetime NOT NULL,
+  `time_end` datetime NOT NULL,
   `status` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `quiz`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `quiz_summary`
+--
+
+CREATE TABLE `quiz_summary` (
+  `summary_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `score` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `quiz_summary`
+--
 
 -- --------------------------------------------------------
 
@@ -73,17 +98,21 @@ CREATE TABLE `quiz` (
 
 CREATE TABLE `soal` (
   `soal_id` int(11) NOT NULL,
-  `pertanyaan` varchar(1000) NOT NULL,
-  `pilihan_a` varchar(1000) NOT NULL,
-  `pilihan_b` varchar(1000) NOT NULL,
-  `pilihan_c` varchar(1000) NOT NULL,
-  `pilihan_d` varchar(1000) NOT NULL,
-  `pilihan_e` varchar(1000) NOT NULL,
+  `pertanyaan` varchar(1000) DEFAULT NULL,
+  `pilihan_a` varchar(1000) DEFAULT NULL,
+  `pilihan_b` varchar(1000) DEFAULT NULL,
+  `pilihan_c` varchar(1000) DEFAULT NULL,
+  `pilihan_d` varchar(1000) DEFAULT NULL,
+  `pilihan_e` varchar(1000) DEFAULT NULL,
   `durasi` int(11) NOT NULL,
   `jawaban_benar` int(11) NOT NULL,
   `quiz_id` int(11) NOT NULL,
   `gambar_soal` varchar(1000) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `soal`
+--
 
 --
 -- Indexes for dumped tables
@@ -108,6 +137,12 @@ ALTER TABLE `quiz`
   ADD PRIMARY KEY (`quiz_id`);
 
 --
+-- Indexes for table `quiz_summary`
+--
+ALTER TABLE `quiz_summary`
+  ADD PRIMARY KEY (`summary_id`);
+
+--
 -- Indexes for table `soal`
 --
 ALTER TABLE `soal`
@@ -127,19 +162,25 @@ ALTER TABLE `announcement`
 -- AUTO_INCREMENT for table `peserta`
 --
 ALTER TABLE `peserta`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `quiz`
 --
 ALTER TABLE `quiz`
-  MODIFY `quiz_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `quiz_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `quiz_summary`
+--
+ALTER TABLE `quiz_summary`
+  MODIFY `summary_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `soal`
 --
 ALTER TABLE `soal`
-  MODIFY `soal_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `soal_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=98;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
